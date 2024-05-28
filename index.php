@@ -3,6 +3,9 @@
 require_once 'vendor/autoload.php';
 
 use App\Email;
+use App\ProductCirc;
+use App\ProductList;
+use App\ProductRect;
 use App\SpamChecker;// FQCN
 
 /*
@@ -19,3 +22,22 @@ $checker = new SpamChecker();
 // Appeler sur cette instance la méthode isSpam en lui passant
 // l'instance d'Email
 var_dump($checker->isSpam($email));
+
+
+// Produits (abstractions)
+$productCirc = new ProductCirc("Produit circulaire", 456, 987);
+$productRect = new ProductRect("Produit rectangulaire", 412, 12, 24);
+
+var_dump($productCirc, $productRect);
+
+$list = new ProductList([
+    $productCirc,
+    $productRect,
+    new ProductRect("Autre produit rect", 684, 45, 12),
+    new ProductRect("Encore un rectangulaire", 684, 45, 12),
+    new ProductCirc("Autre produit circ", 684, 45),
+]);
+
+var_dump($list);
+
+$list->display();

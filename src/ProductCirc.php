@@ -4,7 +4,13 @@ namespace App;
 
 class ProductCirc extends Product
 {
-    private int $diameter;
+    public function __construct(
+        string $name,
+        float $price,
+        private int $diameter
+    ) {
+        parent::__construct($name, $price);
+    }
 
     public function getSurface(): float
     {

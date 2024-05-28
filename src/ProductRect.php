@@ -4,8 +4,14 @@ namespace App;
 
 class ProductRect extends Product
 {
-    private int $width;
-    private int $height;
+    public function __construct(
+        string $name,
+        float $price,
+        private int $width,
+        private int $height
+    ) {
+        parent::__construct($name, $price);
+    }
 
     public function getSurface(): float
     {
